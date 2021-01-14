@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/namelist', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.Promise = global.Promise;
+
+const db = mongoose.connect('mongodb://localhost/namelist', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'))
   .catch((err) => console.log(err));
 
-const schema = mongoose.Schema({
+const schema = new mongoose.Schema({
   name: String,
   images: Array,
   username: String,
@@ -14,4 +16,5 @@ const schema = mongoose.Schema({
 
 const Name = mongoose.model('Name', schema);
 
+module.exports = db;
 module.exports = Name;
