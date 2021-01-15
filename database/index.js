@@ -8,12 +8,13 @@ const db = mongoose.connect('mongodb://localhost/itemlist', { useNewUrlParser: t
   .catch((err) => console.log(err));
 
 const schema = new mongoose.Schema({
-  name: String,
+  _id: Number,
   images: Array,
+  thumbs: Array,
   favorite: Boolean,
 });
 
-const Name = mongoose.model('Name', schema);
+const Item = mongoose.model('Item', schema);
 
 module.exports = db;
-module.exports = Name;
+module.exports = Item;

@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   getNames() {
-    axios.get('/names')
+    axios.get('/items')
       .then(({ data }) => {
         this.setState({ images: data[0].images, main: data[0].images[0] });
       });
@@ -30,33 +30,32 @@ class App extends React.Component {
 
   thumbClick(event) {
     event.preventDefault();
-    console.log(event.target.src)
-    this.setState({ main: event.target.src })
+    this.setState({ main: event.target.src });
   }
 
   render() {
+    const { images, main } = this.state;
     return (
       <div>
 
         <div className="col1">
-        {this.state.images.map((nameCard, index) =>
-          <div key={nameCard + index}><img onClick={this.thumbClick} className="thumb" src={nameCard}/></div>)}
+          {images.map((image) => <div role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick} key={image + (Math.random() * Math.floor(100))}><img className="thumb" alt="noimage" src={image} /></div>)}
         </div>
 
         <div className="col2">
-        <img className="thumb" src="left.png"/>
+          <img className="thumb" alt="noimage" src="left.png" />
         </div>
 
         <div className="col3">
-          <img name="main" className="main" src={this.state.main}/>
+          <img name="main" className="main" alt="noimage" src={main} />
         </div>
 
         <div className="col4">
-        <img className="thumb" src="right.png"/>
+          <img className="thumb" alt="noimage" src="right.png" />
         </div>
 
         <div className="col5">
-        <img className="fav" src="fav.png"/>
+          <img className="fav" alt="noimage" src="fav.png" />
         </div>
 
       </div>
