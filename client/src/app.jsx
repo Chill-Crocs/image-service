@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: [],
-      main: '',
+      images: ['https://static8.depositphotos.com/1229718/862/i/600/depositphotos_8622033-stock-photo-out-of-order.jpg'],
+      main: 'https://static8.depositphotos.com/1229718/862/i/600/depositphotos_8622033-stock-photo-out-of-order.jpg',
     };
     this.getNames = this.getNames.bind(this);
     this.thumbClick = this.thumbClick.bind(this);
