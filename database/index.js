@@ -10,7 +10,6 @@ const db = mongoose.connect('mongodb://localhost/itemlist', { useNewUrlParser: t
 const schema = new mongoose.Schema({
   name: String,
   images: Array,
-  username: String,
   favorite: Boolean,
 });
 
