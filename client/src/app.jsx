@@ -49,7 +49,7 @@ class App extends React.Component {
         <div className="col3">
           <img name="main" className="main" alt="noimage" src={main} />
         </div>
-
+        <span>hello</span>
         <div className="col4">
           <img className="thumb" alt="noimage" src="right.png" />
         </div>

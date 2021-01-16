@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.get('/items', (req, res) => {
   Item.find({})
-    .then((data) => res.send(data))
+    .then((data) => res.status(200).send(data))
     .catch((err) => res.send(err));
 });
 
