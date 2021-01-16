@@ -3,7 +3,7 @@ const SRC_DIR = path.resolve(__dirname, 'client', 'src');
 const OUT_DIR = path.resolve(__dirname, 'public');
 
 module.exports = {
-  entry: path.resolve(SRC_DIR, 'index.jsx'),
+  entry: ['@babel/polyfill', path.resolve(SRC_DIR, 'index.jsx')],
   output: {
 	path: OUT_DIR,
 	filename: 'bundle.js'
