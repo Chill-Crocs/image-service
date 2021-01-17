@@ -10,14 +10,14 @@ class Thumbs extends React.Component {
   thumbClick(event) {
     event.preventDefault();
     const { thumbs } = this.props;
-    thumbs(event.target.src);
+    thumbs(event.target.name);
   }
 
   render() {
     const { images } = this.props;
     return (
       <div className="col1">
-        {images.map((image, index) => <div name={index} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick} key={image + (Math.random() * Math.floor(100))}><img className="thumb" alt="noimage" src={image} /></div>)}
+        {images.map((image, index) => <div name={index} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick} key={image + (Math.random() * Math.floor(100))}><img name={index} className="thumb" alt="noimage" src={image} /></div>)}
       </div>
     );
   }
