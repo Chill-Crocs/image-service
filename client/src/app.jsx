@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
@@ -11,9 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      _id: 0,
       images: ['https://static8.depositphotos.com/1229718/862/i/600/depositphotos_8622033-stock-photo-out-of-order.jpg'],
       main: 0,
-      favorite: false,
       fav: 'whiteHeart.svg',
     };
     this.getNames = this.getNames.bind(this);
@@ -36,7 +37,7 @@ class App extends React.Component {
         } else {
           newFav = 'whiteHeart.svg';
         }
-        this.setState({ images: data[0].images, favorite: data[0].favorite, fav: newFav });
+        this.setState({ _id: data[0]._id, images: data[0].images, fav: newFav });
       });
   }
 
@@ -66,9 +67,13 @@ class App extends React.Component {
 
   changeFav() {
     // eslint-disable-next-line no-unused-vars
-    const { favorite, fav } = this.state;
-    const newFav = !favorite ? 'redHeart.svg' : 'whiteHeart.svg';
-    this.setState({ favorite: !favorite, fav: newFav });
+    const { _id } = this.state;
+    // const newFav = !favorite ? 'redHeart.svg' : 'whiteHeart.svg';
+    // this.setState({ favorite: !favorite, fav: newFav });
+    axios.patch('./items', { _id })
+      .then(() => {
+        this.getNames();
+      });
   }
 
   render() {
