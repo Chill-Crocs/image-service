@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const faker = require('faker');
 
-const Name = require('./index.js');
+const Item = require('./index.js');
 
 const addImageArray = () => {
   const imageAmount = Math.floor(Math.random() * (9 - 3) + 3);
@@ -14,20 +14,25 @@ const addImageArray = () => {
 
 const addFakeNames = () => {
   const names = [{
-    name: 'Buddha | Shoe Charms | Shoe Decor | Crok Charms | Christmas Gifts | Birthday Gifts | Shoe Plugs | Clog Shoe Charms | Garden Charms | Plants',
+    _id: 0,
     images: [
       'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
       'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
       'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
     ],
-    username: faker.internet.userName(),
+    thumbs: [
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+    ],
     favorite: faker.random.boolean(),
   }];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 1; i < 100; i += 1) {
+    const pics = addImageArray();
     names.push({
-      name: faker.commerce.productName(),
-      images: addImageArray(),
-      username: faker.internet.userName(),
+      _id: i,
+      images: pics,
+      thumbs: pics,
       favorite: faker.random.boolean(),
     });
   }
@@ -37,7 +42,7 @@ const addFakeNames = () => {
 const fakeNames = addFakeNames();
 
 const insertFakeNames = () => {
-  Name.create(fakeNames)
+  Item.create(fakeNames)
     .then(() => process.exit())
     .catch((err) => console.log(err));
 };

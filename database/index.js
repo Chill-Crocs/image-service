@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-const db = mongoose.connect('mongodb://localhost/namelist', { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connect('mongodb://localhost/itemlist', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'))
   .catch((err) => console.log(err));
 
 const schema = new mongoose.Schema({
-  name: String,
+  _id: Number,
   images: Array,
-  username: String,
+  thumbs: Array,
   favorite: Boolean,
 });
 
-const Name = mongoose.model('Name', schema);
+const Item = mongoose.model('Item', schema);
 
 module.exports = db;
-module.exports = Name;
+module.exports = Item;
