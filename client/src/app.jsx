@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
+import Thumbs from './thumbs';
 
 console.log(`Updated: ${new Date().toLocaleTimeString('en-US', {
   hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false,
@@ -28,9 +29,8 @@ class App extends React.Component {
       });
   }
 
-  thumbClick(event) {
-    event.preventDefault();
-    this.setState({ main: event.target.src });
+  thumbClick(src) {
+    this.setState({ main: src });
   }
 
   render() {
@@ -38,9 +38,7 @@ class App extends React.Component {
     return (
       <div>
 
-        <div className="col1">
-          {images.map((image) => <div role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick} key={image + (Math.random() * Math.floor(100))}><img className="thumb" alt="noimage" src={image} /></div>)}
-        </div>
+        <div className="col1"><Thumbs images={images} thumbs={this.thumbClick} /></div>
 
         <div className="col2">
           <img className="thumb" alt="noimage" src="left.png" />
@@ -49,7 +47,7 @@ class App extends React.Component {
         <div className="col3">
           <img name="main" className="main" alt="noimage" src={main} />
         </div>
-        <span>hello</span>
+
         <div className="col4">
           <img className="thumb" alt="noimage" src="right.png" />
         </div>
