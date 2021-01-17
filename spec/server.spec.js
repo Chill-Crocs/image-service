@@ -7,7 +7,8 @@ const request = require("supertest");
 
 describe("Server", () => {
   test("It should make a GET request", async () => {
-    const res = await request('http://localhost:3000')
+    // const res =
+    await request('http://localhost:3000')
       .get('/items')
       .expect(200);
     //   .expect('Content-Type', /json/);
