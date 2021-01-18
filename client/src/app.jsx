@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       _id: 0,
-      images: ['https://static8.depositphotos.com/1229718/862/i/600/depositphotos_8622033-stock-photo-out-of-order.jpg'],
+      images: [],
       thumbClass: [],
       main: 0,
       favorite: false,
@@ -19,6 +19,7 @@ class App extends React.Component {
     this.thumbClick = this.thumbClick.bind(this);
     this.leftClick = this.leftClick.bind(this);
     this.rightClick = this.rightClick.bind(this);
+    this.mainClick = this.mainClick.bind(this);
     this.changeFav = this.changeFav.bind(this);
   }
 
@@ -27,12 +28,17 @@ class App extends React.Component {
   }
 
   getItems() {
+    const { main } = this.state;
     axios.get('/items')
       .then(({ data }) => {
         let newFav;
-        const thumbsArray = ['image-thumbMain'];
-        for (let i = 1; i < data[0].images.length; i += 1) {
-          thumbsArray.push('image-thumb');
+        const thumbsArray = [];
+        for (let i = 0; i < data[0].images.length; i += 1) {
+          if (i === main) {
+            thumbsArray.push('image-thumbMain');
+          } else {
+            thumbsArray.push('image-thumb');
+          }
         }
         if (data[0].favorite) {
           newFav = 'redHeart.svg';
@@ -50,6 +56,8 @@ class App extends React.Component {
   }
 
   thumbClick(index) {
+    setTimeout(() => document.getElementById('main').classList.remove('fade-in'), 500);
+    document.getElementById('main').classList.toggle('fade-in');
     const { thumbClass } = this.state;
     thumbClass[thumbClass.indexOf('image-thumbMain')] = 'image-thumb';
     thumbClass[index] = 'image-thumbMain';
@@ -57,6 +65,8 @@ class App extends React.Component {
   }
 
   leftClick() {
+    setTimeout(() => document.getElementById('main').classList.remove('fade-in'), 500);
+    document.getElementById('main').classList.toggle('fade-in');
     const { images, main, thumbClass } = this.state;
     thumbClass.push(thumbClass.shift());
     const max = images.length;
@@ -68,6 +78,8 @@ class App extends React.Component {
   }
 
   rightClick() {
+    setTimeout(() => document.getElementById('main').classList.remove('fade-in'), 500);
+    document.getElementById('main').classList.toggle('fade-in');
     const { images, main, thumbClass } = this.state;
     thumbClass.unshift(thumbClass.pop());
     const max = images.length;
@@ -76,6 +88,10 @@ class App extends React.Component {
     } else {
       this.setState({ main: main + 1 });
     }
+  }
+
+  mainClick() {
+    console.log('modal here')
   }
 
   changeFav() {
@@ -100,7 +116,7 @@ class App extends React.Component {
         </div>
 
         <div className="image-col3">
-          <img name="main" className="image-main" alt="noimage" src={images[main]} />
+          <span onClick={this.mainClick} name="main" role="button" tabIndex={0} onKeyUp={this.mainClick}><img id="main" name="main" className="image-main" alt="noimage" src={images[main]} /></span>
         </div>
 
         <div className="image-col4">

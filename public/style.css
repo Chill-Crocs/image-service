@@ -1,25 +1,20 @@
 /* Image style */
 .image-thumb, .image-thumbMain {
-  height: auto;
-  width: auto;
   max-width: 60px;
   max-height: 60px;
   margin-right: 10px;
   border-radius: 7px;
 }
 .image-thumb {
+  opacity: 0.8;
   border: 2px solid white;
 }
 .image-thumbMain {
   border: 2px solid black;
 }
 .image-main {
-  height: auto;
-  width: auto;
   max-width: 100%;
   max-height: 100%;
-  min-width: 450px;
-  min-height: 450px;
   border-radius: 7px;
 }
 
@@ -38,12 +33,29 @@
 .image-right {
   max-width: 50px;
   max-height: 50px;
-  margin-top: 180px;
+  margin-top: 179px;
 }
 .image-fav {
   max-width: 45px;
   max-height: 45px;
   margin-left: 10px;
+}
+
+/* Hover style */
+.image-thumb:hover {
+  cursor: pointer;
+  filter: brightness(97%);
+}
+.image-main {
+	cursor: url('expand.svg'), default;
+}
+.image-left:hover, .image-right:hover {
+  cursor: pointer;
+  filter: brightness(97%) drop-shadow(0px 0px 5px rgb(150, 150, 150));
+}
+.image-fav:hover {
+  cursor: pointer;
+  filter: brightness(97%) drop-shadow(0px 0px 10px rgb(150, 150, 150));
 }
 
 /* Layout */
@@ -66,8 +78,10 @@
 }
 .image-col3 {
   grid-column: 3 / 4;
-  min-width: 450px;
-  min-height: 450px;
+  min-width: 400px;
+  min-height: 400px;
+  max-width: 500px;
+  max-height: 500px;
   padding: 0px;
   margin: 0px;
 }
@@ -76,3 +90,39 @@
   padding: 0px;
   margin: 0px;
 }
+
+/* Fade-in */
+.fade-in {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+/* Remove roll over border */
+span:focus, div:focus {
+  outline: none;
+}
+
+/* Modal */
