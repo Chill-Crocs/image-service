@@ -1,75 +1,78 @@
-body {
-  background-color: aqua;
-}
-
-.thumb {
+/* Image style */
+.image-thumb, .image-thumbMain {
   height: auto;
   width: auto;
   max-width: 60px;
   max-height: 60px;
+  margin-right: 10px;
   border-radius: 7px;
 }
-
-.main {
+.image-thumb {
+  border: 2px solid white;
+}
+.image-thumbMain {
+  border: 2px solid black;
+}
+.image-main {
   height: auto;
   width: auto;
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 450px;
+  min-height: 450px;
   border-radius: 7px;
 }
 
-.col1 {
-  display: inline-block;
-  height: 600px;
-  width: 80px;
-  vertical-align: top;
+/* Button style */
+.image-left, .image-right, .image-fav {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  filter: drop-shadow(0px 0px 5px rgb(150, 150, 150));
+}
+.image-left {
+  max-width: 50px;
+  max-height: 50px;
+  margin-top: 225px;
+}
+.image-right {
+  max-width: 50px;
+  max-height: 50px;
+  margin-top: 180px;
+}
+.image-fav {
+  max-width: 45px;
+  max-height: 45px;
+  margin-left: 10px;
 }
 
-.col2 {
-  display: inline-block;
-  height: 600px;
-  width: fit-content;
-  vertical-align: middle;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
-
+/* Layout */
+.image-grid {
+  display: flex;
+  grid-template-columns: 5% 5% auto 5%;
+  max-height: 525px;
+  max-width: 700px;
+  margin: 25px;
 }
-
-.col3 {
-  display: inline-block;
-  height: 600px;
-  width: 600px;
+.image-col1 {
+  grid-column: 1 / 4;
   padding: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
+  margin: 0px;
 }
-
-.col4 {
-  display: inline-block;
-  height: 600px;
-  width: fit-content;
-  vertical-align: middle;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.col5 {
-  display: inline-block;
-  height: 600px;
-  width: fit-content;
-  vertical-align: top;
+.image-col2 {
+  grid-column: 2 / 4;
   padding: 0px;
-  margin-left: 0px;
-  margin-right: auto;
+  margin: 0px;
 }
-
-.fav {
-  height: auto;
-  width: auto;
-  max-width: 60px;
-  max-height: 60px;
-  border-radius: 7px;
+.image-col3 {
+  grid-column: 3 / 4;
+  min-width: 450px;
+  min-height: 450px;
+  padding: 0px;
+  margin: 0px;
+}
+.image-col4 {
+  grid-column: 4 / 4;
+  padding: 0px;
+  margin: 0px;
 }

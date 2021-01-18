@@ -14,10 +14,10 @@ class Thumbs extends React.Component {
   }
 
   render() {
-    const { images } = this.props;
+    const { images, thumbClass } = this.props;
     return (
-      <div className="col1">
-        {images.map((image, index) => <div name={index} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick} key={image + (Math.random() * Math.floor(100))}><img name={index} className="thumb" alt="noimage" src={image} /></div>)}
+      <div className="image-col1">
+        {images.map((image, index) => <div name={index} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick} key={image + (Math.random() * Math.floor(100))}><img name={index} className={thumbClass[index]} alt="noimage" src={image} /></div>)}
       </div>
     );
   }
@@ -25,6 +25,7 @@ class Thumbs extends React.Component {
 
 Thumbs.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  thumbClass: PropTypes.arrayOf(PropTypes.string).isRequired,
   thumbs: PropTypes.func.isRequired,
 };
 

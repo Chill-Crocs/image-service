@@ -18,26 +18,50 @@ describe('Rendering', () => {
     render(<App />);
   });
 
-  it('It should render divisions without crashing', () => {
+  it('It should render elements without crashing', () => {
     const wrapper = shallow(<App />);
-    const div2 = (<div className="col2"><img className="thumb" alt="noimage" src="left.png" /></div>);
-    expect(wrapper.contains(div2)).toEqual(true);
+    const element = (<img className="thumb" alt="noimage" src="left.svg" />);
+    expect(wrapper.contains(element)).toEqual(true);
   });
 });
 
-describe('Props', () => {
+describe('Thumbs', () => {
   const testProp = { images: ['one', 'two', 'three'] };
   const appWrapper = mount(<App />);
-  appWrapper.setState({ images: ['one', 'two', 'three'], main: 'one' });
+  appWrapper.setState({ images: ['one', 'two', 'three'], main: 0 });
   const thumbWrapper = mount(<Thumbs images={testProp.images} />);
-  it('It should pass props', () => {
+  it('It should pass props to Thumbs', () => {
     expect(thumbWrapper.find('img').at(0).prop('src')).toEqual('one');
     const child = thumbWrapper.find('div');
     const click = child.find('div').at(2);
     click.simulate('click', { preventDefault: () => {}});
-    expect(appWrapper.state('main')).toEqual('two');
+    expect(appWrapper.state('main')).toEqual(2);
   });
 });
+
+describe('Buttons', () => {
+  const wrapper = shallow(<App />);
+  wrapper.setState({ images: ['one', 'two', 'three'], main: 0 });
+  it('It should change main state when button is clicked', () => {
+    expect(wrapper.state('main')).toEqual(0);
+    const click = wrapper.find('span').at(0);
+    click.simulate('click', { preventDefault: () => {}});
+    expect(wrapper.state('main')).toEqual(2);
+  });
+});
+
+describe('Favorite', () => {
+  const wrapper = shallow(<App />);
+  wrapper.setState({ favorite: false });
+  it('It should change main state when button is clicked', () => {
+    // expect(wrapper.find('span').at(2).prop('name')).toEqual('fav');
+    expect(wrapper.state('favorite')).toEqual(false);
+    const click = wrapper.find('span').at(2);
+    click.simulate('click', { preventDefault: () => {}});
+    expect(wrapper.state('favorite')).toEqual(true);
+  });
+});
+
 
 // class Thumbs extends React.Component {
 //   constructor(props) {
