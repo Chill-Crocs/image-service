@@ -78,7 +78,7 @@ class Modal extends React.Component {
                   onKeyUp={(event) => this.leftClick(event)}
                 >
                   <img
-                    className="image-modalLeft image-modalButton"
+                    className="image-modalLeft"
                     alt="noimage"
                     src="left.svg"
                   />
@@ -101,7 +101,7 @@ class Modal extends React.Component {
                   onKeyUp={(event) => this.rightClick(event)}
                 >
                   <img
-                    className="image-modalRight image-modalButton"
+                    className="image-modalRight"
                     alt="noimage"
                     src="right.svg"
                   />

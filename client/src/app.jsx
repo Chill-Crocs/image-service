@@ -17,7 +17,7 @@ class App extends React.PureComponent {
       modalMain: 0,
       favorite: false,
       fav: 'whiteHeart.svg',
-      showModal: false, // change to false
+      showModal: true, // change to false
     };
     this.getItems = this.getItems.bind(this);
     this.thumbClick = this.thumbClick.bind(this);

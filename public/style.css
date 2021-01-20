@@ -63,9 +63,7 @@
 .image-modalLeft, .image-modalRight {
   max-width: 50px;
   max-height: 50px;
-}
-.image-modalButton {
-  border: 2px solid rgba(0,0,0,0.7);
+  padding: 1px;
 }
 
 /* Remove roll over border */
@@ -103,9 +101,12 @@ span:focus, div:focus {
   cursor: pointer;
   filter: brightness(97%) drop-shadow(0px 0px 10px rgb(150, 150, 150));
 }
-.image-modalClose:hover, .image-modalLeft:hover {
-  max-width: 60px;
-  max-height: 60px;
+.image-modalLeft:hover, .image-modalRight:hover, .image-modalClose:hover {
+  top: 9px;
+  right: 9px;
+  max-width: 52px;
+  max-height: 52px;
+  padding: 0px;
   cursor: pointer;
 }
 
@@ -256,16 +257,18 @@ span:focus, div:focus {
   padding-bottom: 10px;
   padding-top: 10px;
 }
+
+/* Zoom Layout */
 .image-modalZoomBox {
   display: inline-block;
   overflow: hidden;
   overflow: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Hide scroll bar in zoom IE and Edge */
+  scrollbar-width: none;  /* Hide scroll bar in zoom Firefox */
   border-radius: 7px;
 }
 .image-modalZoomBox::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hide scroll bar in zoom */
 }
 .image-modalZoomMain {
   display: block;
