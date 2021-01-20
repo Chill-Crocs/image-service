@@ -7,7 +7,7 @@ const addImageArray = () => {
   const imageAmount = Math.floor(Math.random() * (7 - 3) + 3);
   const imageArray = [];
   for (let i = 0; i < imageAmount; i += 1) {
-    imageArray.push(faker.image.imageUrl());
+    imageArray.push(faker.image.image());
   }
   return imageArray;
 };
