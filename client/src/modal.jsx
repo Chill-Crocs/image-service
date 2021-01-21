@@ -17,10 +17,12 @@ class Modal extends React.Component {
 
   componentDidMount() {
     document.body.addEventListener('mousemove', (e) => {
-      document.body.getElementsByClassName('image-modalZoomMain')[0].setAttribute('style',`transform: translate(${-e.pageX + 500}px, ${-e.pageY + 500}px) scale(2);`);
-      const box = document.getElementsByClassName('image-modalZoomBox')[0].querySelector(':hover');
-      if (box === null) {
-        this.setState({ showZoomModal: false });
+      if (document.body.getElementsByClassName('image-modalZoomMain')[0] !== undefined) {
+        document.body.getElementsByClassName('image-modalZoomMain')[0].setAttribute('style',`transform: translate(${-e.pageX + 500}px, ${-e.pageY + 500}px) scale(2);`);
+        const box = document.getElementsByClassName('image-modalZoomBox')[0].querySelector(':hover');
+        if (box === null) {
+          this.setState({ showZoomModal: false });
+        }
       }
     });
   }
