@@ -4,10 +4,10 @@ const faker = require('faker');
 const Item = require('./index.js');
 
 const addImageArray = () => {
-  const imageAmount = Math.floor(Math.random() * (9 - 3) + 3);
+  const imageAmount = Math.floor(Math.random() * (7 - 3) + 3);
   const imageArray = [];
   for (let i = 0; i < imageAmount; i += 1) {
-    imageArray.push(faker.image.imageUrl());
+    imageArray.push(faker.image.image());
   }
   return imageArray;
 };
@@ -25,7 +25,7 @@ const addFakeNames = () => {
       'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
       'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
     ],
-    favorite: faker.random.boolean(),
+    favorite: false,
   }];
   for (let i = 1; i < 100; i += 1) {
     const pics = addImageArray();
