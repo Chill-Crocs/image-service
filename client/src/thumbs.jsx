@@ -32,7 +32,7 @@ class Thumbs extends React.Component {
       }
       if (images.length % 3 === 0) {
         return (
-          <div className="image-modalCol4">
+          <div className="image-modalCol2">
             <div className="image-modalThumbBox">
               {imageArray.map((triplet, index) => <div key={triplet[0] + (Math.random() * Math.floor(100))}><div className="image-thumbCouple"><div name={index * 3} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick}><img name={index * 3} className={thumbClass[0]} alt="noimage" src={triplet[0]} /></div><div name={index * 3 + 1} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick}><img name={index * 3 + 1} className={thumbClass[1]} alt="noimage" src={triplet[1]} /></div></div><div name={index * 3 + 2} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick}><img name={index * 3 + 2} className={thumbClass[2]} alt="noimage" src={triplet[2]} /></div></div>)}
             </div>
@@ -40,7 +40,7 @@ class Thumbs extends React.Component {
         );
       }
       return (
-        <div className="image-modalCol4">
+        <div className="image-modalCol2">
           <div className="image-modalThumbBox">
             {imageArray.map((triplet, index) => <div key={triplet[0] + (Math.random() * Math.floor(100))}><div className="image-thumbCouple"><div name={index * 3} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick}><img name={index * 3} className={thumbClass[0]} alt="noimage" src={triplet[0]} /></div><div name={index * 3 + 1} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick}><img name={index * 3 + 1} className={thumbClass[1]} alt="noimage" src={triplet[1]} /></div></div><div name={index * 3 + 2} role="button" tabIndex={0} onClick={this.thumbClick} onKeyUp={this.thumbClick}><img name={index * 3 + 2} className={thumbClass[2]} alt="noimage" src={triplet[2]} /></div></div>)}
             <div className="image-thumbCouple">

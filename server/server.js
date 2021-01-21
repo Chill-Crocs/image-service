@@ -45,7 +45,6 @@ app.patch('/items', (req, res) => {
   })
     .then((data) => {
       const change = !data.favorite;
-      console.log(change);
       Item.findOneAndUpdate(req.body._id, {
         favorite: change,
       })

@@ -156,13 +156,7 @@ class App extends React.PureComponent {
 
         <div className="image-col2">
           <span onClick={this.leftClick} name="button" role="button" tabIndex={0} onKeyUp={this.leftClick}><img className="image-left" alt="noimage" src="left.svg" /></span>
-        </div>
-
-        <div className="image-col3 image-colMain">
           <span onClick={this.mainClick} name="main" role="button" tabIndex={0} onKeyUp={this.mainClick}><img id="main" name="main" className="image-main" alt="noimage" src={images[main]} /></span>
-        </div>
-
-        <div className="image-col4">
           <span onClick={this.rightClick} role="button" tabIndex={0} onKeyUp={this.rightClick}><img className="image-right" alt="noimage" src="right.svg" /></span>
         </div>
 
