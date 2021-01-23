@@ -17,7 +17,7 @@ class App extends React.PureComponent {
       modalMain: 0,
       favorite: false,
       fav: 'whiteHeart.svg',
-      showModal: true, // change to false
+      showModal: false,
     };
     this.getItems = this.getItems.bind(this);
     this.thumbClick = this.thumbClick.bind(this);
@@ -34,15 +34,15 @@ class App extends React.PureComponent {
     this.getItems();
   }
 
-  getItems() {
-    const { main } = this.state;
-    axios.get('/items')
+  getItems(id) {
+    const { _id, main } = this.state;
+    const item = id || _id;
+    axios.get('/items', { params: { _id: item } })
       .then(({ data }) => {
-        const item = 0;
         let newFav;
         const thumbsArray = [];
         const modalThumbsArray = [];
-        for (let i = 0; i < data[item].images.length; i += 1) {
+        for (let i = 0; i < data.images.length; i += 1) {
           if (i === main) {
             thumbsArray.push('image-thumbMain');
           } else {
@@ -54,16 +54,16 @@ class App extends React.PureComponent {
             modalThumbsArray.push('image-modalThumb');
           }
         }
-        if (data[item].favorite) {
+        if (data.favorite) {
           newFav = 'redHeart.svg';
         } else {
           newFav = 'whiteHeart.svg';
         }
         this.setState({
-          _id: data[item]._id,
-          images: data[item].images,
+          _id: data._id,
+          images: data.images,
           fav: newFav,
-          favorite: data[item].favorite,
+          favorite: data.favorite,
           thumbClass: thumbsArray,
           modalThumbClass: modalThumbsArray,
         });
@@ -71,8 +71,10 @@ class App extends React.PureComponent {
   }
 
   thumbClick(index) {
-    // setTimeout(() => document.getElementById('main').classList.remove('fade-in'), 500);
-    // document.getElementById('main').classList.toggle('fade-in');
+    if (document.getElementById('main')) {
+      setTimeout(() => document.getElementById('main').setAttribute('class', 'image-main'), 500);
+      document.getElementById('main').setAttribute('class', 'image-main fade-in');
+    }
     const { thumbClass } = this.state;
     thumbClass[thumbClass.indexOf('image-thumbMain')] = 'image-thumb';
     thumbClass[index] = 'image-thumbMain';
@@ -80,8 +82,10 @@ class App extends React.PureComponent {
   }
 
   leftClick() {
-    // setTimeout(() => document.getElementById('main').classList.remove('fade-in'), 500);
-    // document.getElementById('main').classList.toggle('fade-in');
+    if (document.getElementById('main')) {
+      setTimeout(() => document.getElementById('main').setAttribute('class', 'image-main'), 500);
+      document.getElementById('main').setAttribute('class', 'image-main fade-in');
+    }
     const { images, main, thumbClass } = this.state;
     thumbClass.push(thumbClass.shift());
     const max = images.length;
@@ -93,8 +97,10 @@ class App extends React.PureComponent {
   }
 
   rightClick() {
-    // setTimeout(() => document.getElementById('main').classList.remove('fade-in'), 500);
-    // document.getElementById('main').classList.toggle('fade-in');
+    if (document.getElementById('main')) {
+      setTimeout(() => document.getElementById('main').setAttribute('class', 'image-main'), 500);
+      document.getElementById('main').setAttribute('class', 'image-main fade-in');
+    }
     const { images, main, thumbClass } = this.state;
     thumbClass.unshift(thumbClass.pop());
     const max = images.length;
@@ -137,8 +143,8 @@ class App extends React.PureComponent {
 
   changeFav(event) {
     event.preventDefault();
-    const { _id } = this.state;
-    axios.patch('./items', { _id })
+    const { _id, favorite } = this.state;
+    axios.patch('./items', { _id, favorite })
       .then(() => {
         this.getItems();
       });
@@ -156,13 +162,7 @@ class App extends React.PureComponent {
 
         <div className="image-col2">
           <span onClick={this.leftClick} name="button" role="button" tabIndex={0} onKeyUp={this.leftClick}><img className="image-left" alt="noimage" src="left.svg" /></span>
-        </div>
-
-        <div className="image-col3 image-colMain">
           <span onClick={this.mainClick} name="main" role="button" tabIndex={0} onKeyUp={this.mainClick}><img id="main" name="main" className="image-main" alt="noimage" src={images[main]} /></span>
-        </div>
-
-        <div className="image-col4">
           <span onClick={this.rightClick} role="button" tabIndex={0} onKeyUp={this.rightClick}><img className="image-right" alt="noimage" src="right.svg" /></span>
         </div>
 

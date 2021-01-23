@@ -14,6 +14,32 @@ class Modal extends React.Component {
     this.zoom = this.zoom.bind(this);
   }
 
+  componentDidMount() {
+    let transform = '';
+    if ((navigator.userAgent.indexOf('Opera') || navigator.userAgent.indexOf('OPR')) !== -1) {
+      transform = '-o-transform:';
+    } else if (navigator.userAgent.indexOf('Chrome') !== -1) {
+      transform = 'transform:';
+    } else if (navigator.userAgent.indexOf('Safari') !== -1) {
+      transform = '-webkit-transform:';
+    } else if (navigator.userAgent.indexOf('Firefox') !== -1) {
+      transform = '-moz-transform:';
+    } else if ((navigator.userAgent.indexOf('MSIE') !== -1) || (!!document.documentMode === true)) { // IF IE > 10
+      transform = '-ms-transform:';
+    } else {
+      transform = 'transform:';
+    }
+    document.body.addEventListener('mousemove', (e) => {
+      if (document.body.getElementsByClassName('image-modalZoomMain')[0] !== undefined) {
+        document.body.getElementsByClassName('image-modalZoomMain')[0].setAttribute('style',`${transform} translate(${-e.pageX + 500}px, ${-e.pageY + 500}px) scale(2);`);
+        const box = document.getElementsByClassName('image-modalZoomBox')[0].querySelector(':hover');
+        if (box === null) {
+          this.setState({ showZoomModal: false });
+        }
+      }
+    });
+  }
+
   onClose(event) {
     this.setState({ showZoomModal: false });
     const { onClose } = this.props;
@@ -70,22 +96,20 @@ class Modal extends React.Component {
 
           <div className="image-modalGrid">
             <div className="image-modelCarousel">
-              <div className="image-modalCol1">
-                <span
-                  onClick={(event) => this.leftClick(event)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyUp={(event) => this.leftClick(event)}
-                >
-                  <img
-                    className="image-modalLeft"
-                    alt="noimage"
-                    src="left.svg"
-                  />
-                </span>
-              </div>
+              <span
+                onClick={(event) => this.leftClick(event)}
+                role="button"
+                tabIndex={0}
+                onKeyUp={(event) => this.leftClick(event)}
+              >
+                <img
+                  className="image-modalLeft"
+                  alt="noimage"
+                  src="left.svg"
+                />
+              </span>
 
-              <span onClick={this.zoom} className="image-modalCol2 image-colModalMain" name="main" role="button" tabIndex={0} onKeyUp={this.zoom}>
+              <span onClick={this.zoom} name="main" role="button" tabIndex={0} onKeyUp={this.zoom}>
                 <img
                   className="image-modalMain"
                   alt="noimage"
@@ -133,15 +157,13 @@ class Modal extends React.Component {
         </div>
 
         <div className="image-modalGrid">
-          <div className="image-modelCarousel">
-            <span onClick={this.zoom} className="image-modalZoomBox" name="main" role="button" tabIndex={0} onKeyUp={this.zoom}>
-              <img
-                className="image-modalZoomMain"
-                alt="noimage"
-                src={images[main]}
-              />
-            </span>
-          </div>
+          <span onClick={this.zoom} className="image-modalZoomBox" name="main" role="button" tabIndex={0} onKeyUp={this.zoom}>
+            <img
+              className="image-modalZoomMain"
+              alt="noimage"
+              src={images[main]}
+            />
+          </span>
 
           <Thumbs thumbClass={thumbClass} images={images} thumbs={this.thumbClick} />
         </div>
