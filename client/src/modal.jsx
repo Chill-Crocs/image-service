@@ -12,13 +12,26 @@ class Modal extends React.Component {
     this.leftClick = this.leftClick.bind(this);
     this.rightClick = this.rightClick.bind(this);
     this.zoom = this.zoom.bind(this);
-    // this.handleCursor = this.handleCursor.bind(this);
   }
 
   componentDidMount() {
+    let transform = '';
+    if ((navigator.userAgent.indexOf('Opera') || navigator.userAgent.indexOf('OPR')) !== -1) {
+      transform = '-o-transform:';
+    } else if (navigator.userAgent.indexOf('Chrome') !== -1) {
+      transform = 'transform:';
+    } else if (navigator.userAgent.indexOf('Safari') !== -1) {
+      transform = '-webkit-transform:';
+    } else if (navigator.userAgent.indexOf('Firefox') !== -1) {
+      transform = '-moz-transform:';
+    } else if ((navigator.userAgent.indexOf('MSIE') !== -1) || (!!document.documentMode === true)) { // IF IE > 10
+      transform = '-ms-transform:';
+    } else {
+      transform = 'transform:';
+    }
     document.body.addEventListener('mousemove', (e) => {
       if (document.body.getElementsByClassName('image-modalZoomMain')[0] !== undefined) {
-        document.body.getElementsByClassName('image-modalZoomMain')[0].setAttribute('style',`transform: translate(${-e.pageX + 500}px, ${-e.pageY + 500}px) scale(2);`);
+        document.body.getElementsByClassName('image-modalZoomMain')[0].setAttribute('style',`${transform} translate(${-e.pageX + 500}px, ${-e.pageY + 500}px) scale(2);`);
         const box = document.getElementsByClassName('image-modalZoomBox')[0].querySelector(':hover');
         if (box === null) {
           this.setState({ showZoomModal: false });
@@ -26,9 +39,6 @@ class Modal extends React.Component {
       }
     });
   }
-
-  // handleCursor(e) {
-  // }
 
   onClose(event) {
     this.setState({ showZoomModal: false });
@@ -149,7 +159,6 @@ class Modal extends React.Component {
         <div className="image-modalGrid">
           <span onClick={this.zoom} className="image-modalZoomBox" name="main" role="button" tabIndex={0} onKeyUp={this.zoom}>
             <img
-              // onMouseMove={this.handleCursor}
               className="image-modalZoomMain"
               alt="noimage"
               src={images[main]}

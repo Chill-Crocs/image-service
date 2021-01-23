@@ -12,6 +12,7 @@ const addImageArray = () => {
   return imageArray;
 };
 
+
 const addFakeNames = () => {
   const names = [{
     _id: 0,
@@ -26,8 +27,34 @@ const addFakeNames = () => {
       'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
     ],
     favorite: false,
+  },
+  {
+    _id: 100,
+    images: [
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+    ],
+    thumbs: [
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+      'https://i.etsystatic.com/9820983/r/il/221b7e/2714714234/il_1588xN.2714714234_kkio.jpg',
+      'https://i.etsystatic.com/9820983/r/il/1536ca/2762394747/il_794xN.2762394747_kobm.jpg',
+      'https://i.etsystatic.com/9820983/r/il/ba429b/2762394797/il_794xN.2762394797_9xcz.jpg',
+    ],
+    favorite: false,
   }];
-  for (let i = 1; i < 100; i += 1) {
+  for (let i = 1; i < 99; i += 1) {
     const pics = addImageArray();
     names.push({
       _id: i,

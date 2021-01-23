@@ -12,7 +12,9 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.json());
 
 app.get('/items', (req, res) => {
-  Item.find({})
+  Item.findOne({
+    _id: req.query._id,
+  })
     .then((data) => res.status(200).send(data))
     .catch((err) => res.send(err));
 });
@@ -40,16 +42,9 @@ app.put('/items', (req, res) => {
 });
 
 app.patch('/items', (req, res) => {
-  Item.findOne({
-    _id: req.body._id,
+  Item.findOneAndUpdate({ _id: req.body._id }, {
+    favorite: !req.body.favorite,
   })
-    .then((data) => {
-      const change = !data.favorite;
-      Item.findOneAndUpdate(req.body._id, {
-        favorite: change,
-      })
-        .then(() => { console.log(`Item ID ${req.body._id}: change ${data.favorite} to ${change}!`); });
-    })
     .then(() => res.sendStatus(204))
     .catch((err) => res.send(err));
 });
