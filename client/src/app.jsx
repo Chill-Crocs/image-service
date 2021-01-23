@@ -73,7 +73,7 @@ class App extends React.PureComponent {
   thumbClick(index) {
     if (document.getElementById('main')) {
       setTimeout(() => document.getElementById('main').setAttribute('class', 'image-main'), 500);
-      document.getElementById('main').setAttribute('class', 'image-main fade-in');
+      document.getElementById('main').setAttribute('class', 'image-main image-fadeIn');
     }
     const { thumbClass } = this.state;
     thumbClass[thumbClass.indexOf('image-thumbMain')] = 'image-thumb';
@@ -84,7 +84,7 @@ class App extends React.PureComponent {
   leftClick() {
     if (document.getElementById('main')) {
       setTimeout(() => document.getElementById('main').setAttribute('class', 'image-main'), 500);
-      document.getElementById('main').setAttribute('class', 'image-main fade-in');
+      document.getElementById('main').setAttribute('class', 'image-main image-fadeIn');
     }
     const { images, main, thumbClass } = this.state;
     thumbClass.push(thumbClass.shift());
@@ -99,7 +99,7 @@ class App extends React.PureComponent {
   rightClick() {
     if (document.getElementById('main')) {
       setTimeout(() => document.getElementById('main').setAttribute('class', 'image-main'), 500);
-      document.getElementById('main').setAttribute('class', 'image-main fade-in');
+      document.getElementById('main').setAttribute('class', 'image-main image-fadeIn');
     }
     const { images, main, thumbClass } = this.state;
     thumbClass.unshift(thumbClass.pop());

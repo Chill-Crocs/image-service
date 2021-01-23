@@ -80,34 +80,20 @@ class Modal extends React.Component {
       return (
         <div className="image-backGround">
           <div className="image-modalHeader">
-            <span
-              onClick={(event) => this.onClose(event)}
-              role="button"
-              tabIndex={0}
-              onKeyUp={(event) => this.onClose(event)}
-            >
-              <img
-                className="image-modalClose image-modalButton"
-                alt="noimage"
-                src="close.svg"
-              />
-            </span>
+            <button onClick={(event) => this.onClose(event)} className="image-modalClose" type="button">
+              <svg viewBox="0 0 24 24">
+                <path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z" />
+              </svg>
+            </button>
           </div>
 
           <div className="image-modalGrid">
             <div className="image-modelCarousel">
-              <span
-                onClick={(event) => this.leftClick(event)}
-                role="button"
-                tabIndex={0}
-                onKeyUp={(event) => this.leftClick(event)}
-              >
-                <img
-                  className="image-modalLeft"
-                  alt="noimage"
-                  src="left.svg"
-                />
-              </span>
+              <button onClick={this.leftClick} className="image-modalLeft" type="button">
+                <svg viewBox="0 0 24 24">
+                  <path d="M16,21a0.994,0.994,0,0,1-.664-0.253L5.5,12l9.841-8.747a1,1,0,0,1,1.328,1.494L8.5,12l8.159,7.253A1,1,0,0,1,16,21Z" />
+                </svg>
+              </button>
 
               <span onClick={this.zoom} name="main" role="button" tabIndex={0} onKeyUp={this.zoom}>
                 <img
@@ -118,18 +104,11 @@ class Modal extends React.Component {
               </span>
 
               <div className="image-modalCol3">
-                <span
-                  onClick={(event) => this.rightClick(event)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyUp={(event) => this.rightClick(event)}
-                >
-                  <img
-                    className="image-modalRight"
-                    alt="noimage"
-                    src="right.svg"
-                  />
-                </span>
+                <button onClick={this.rightClick} className="image-modalRight" type="button">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8,21a1,1,0,0,1-.664-1.747L15.5,12,7.336,4.747A1,1,0,0,1,8.664,3.253L18.5,12,8.664,20.747A0.994,0.994,0,0,1,8,21Z" />
+                  </svg>
+                </button>
               </div>
             </div>
 
@@ -142,18 +121,11 @@ class Modal extends React.Component {
     return (
       <div className="image-backGround">
         <div className="image-modalHeader">
-          <span
-            onClick={(event) => this.onClose(event)}
-            role="button"
-            tabIndex={0}
-            onKeyUp={(event) => this.onClose(event)}
-          >
-            <img
-              className="image-modalClose image-modalButton"
-              alt="noimage"
-              src="close.svg"
-            />
-          </span>
+          <button onClick={(event) => this.onClose(event)} className="image-modalClose" type="button">
+            <svg viewBox="0 0 24 24">
+              <path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z" />
+            </svg>
+          </button>
         </div>
 
         <div className="image-modalGrid">
