@@ -16,6 +16,7 @@
   max-width: 100%;
   max-height: 100%;
   border-radius: 7px;
+  z-index: 4;
 }
 .image-modalMain {
   max-width: 100%;
@@ -40,29 +41,43 @@
 }
 
 /* Button style */
-.image-left, .image-right, .image-fav {
-  filter: drop-shadow(0px 0px 5px rgb(150, 150, 150));
+.image-left, .image-right, .image-fav, .image-notFav {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(34, 34, 34, 0.15);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 24px;
+  line-height: 1;
+  padding: 12px;
 }
 .image-left {
-  position: absolute;
-  top: 45%; bottom: 0; left: 3.5%;
-  vertical-align: middle;
-  max-width: 50px;
-  max-height: 50px;
+  top: 45%; left: 3.5%;
+  max-width: 48px;
+  max-height: 48px;
+  min-height: 48px;
+  min-width: 48px;
+  z-index: 2;
 }
 .image-right {
-  position: absolute;
-  top: 45%; bottom: 0; right: 3.5%;
-  vertical-align: middle;
-  max-width: 50px;
-  max-height: 50px;
+  top: 45%; right: 3.5%;
+  max-width: 48px;
+  max-height: 48px;
+  min-height: 48px;
+  min-width: 48px;
+  z-index: 3;
+}
+.image-fav, .image-notFav {
+  top: 5%; right: 2.5%;
+  max-width: 46px;
+  max-height: 46px;
+  min-height: 46px;
+  min-width: 46px;
+  z-index: 1;
 }
 .image-fav {
-  position: relative;
-  top: 10px;
-  right: 55px;
-  max-width: 45px;
-  max-height: 45px;
+  fill: #A61A2E;
 }
 .image-modalClose {
   position: absolute;
@@ -107,7 +122,7 @@ span:focus, div:focus {
   filter: brightness(97%);
 }
 .image-main:hover {
-	cursor: url('expand.svg'), default;
+	cursor: url('expand.png'), default;
 }
 .image-modalMain:hover {
 	cursor: url('zoomIn.svg'), default;
@@ -115,13 +130,8 @@ span:focus, div:focus {
 .image-modalZoomMain:hover {
 	cursor: url('zoomOut.svg'), default;
 }
-.image-left:hover, .image-right:hover {
-  cursor: pointer;
-  filter: brightness(97%) drop-shadow(0px 0px 5px rgb(150, 150, 150));
-}
-.image-fav:hover {
-  cursor: pointer;
-  filter: brightness(97%) drop-shadow(0px 0px 10px rgb(150, 150, 150));
+.image-left:hover, .image-right:hover, .image-fav:hover {
+  filter: brightness(97%);
 }
 .image-modalLeft:hover, .image-modalRight:hover {
   max-width: 52px;
@@ -290,3 +300,4 @@ span:focus, div:focus {
     display: block;
   }
 }
+
