@@ -16,11 +16,9 @@ import Modal from '../client/src/modal';
 describe('Modal', () => {
   it('It should render elements without crashing', () => {
     const appWrapper = shallow(<Modal modalThumbs={jest.fn()} onClose={jest.fn()} right={jest.fn()} left={jest.fn()} images={['one', 'two', 'three']} thumbClass={['one', 'two', 'three']} main={0} showModal />);
-    const element = (<img
-      className="image-modalClose image-modalButton"
-      alt="noimage"
-      src="close.svg"
-    />);
+    const element = (<svg viewBox="0 0 24 24">
+    <path d="M13.414,12l6.293-6.293a1,1,0,0,0-1.414-1.414L12,10.586,5.707,4.293A1,1,0,0,0,4.293,5.707L10.586,12,4.293,18.293a1,1,0,1,0,1.414,1.414L12,13.414l6.293,6.293a1,1,0,0,0,1.414-1.414Z" />
+  </svg>);
     expect(appWrapper.contains(element)).toEqual(true);
   });
 

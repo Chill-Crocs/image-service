@@ -18,7 +18,9 @@ import Modal from '../client/src/modal';
 describe('App', () => {
   it('It should render elements without crashing', () => {
     const appWrapper = shallow(<App />);
-    const element = (<img className="image-left" alt="noimage" src="left.svg" />);
+    const element = (<svg viewBox="0 0 24 24">
+    <path d="M16,21a0.994,0.994,0,0,1-.664-0.253L5.5,12l9.841-8.747a1,1,0,0,1,1.328,1.494L8.5,12l8.159,7.253A1,1,0,0,1,16,21Z" />
+  </svg>);
     expect(appWrapper.contains(element)).toEqual(true);
   });
 
@@ -53,7 +55,7 @@ describe('App', () => {
   it('It should change the main image when left button is clicked', () => {
     const spy = jest.spyOn(App.prototype, 'leftClick');
     const wrapper = shallow(<App />);
-    wrapper.find('span').at(0).simulate('click', { preventDefault: () => {}});
+    wrapper.find('button').at(0).simulate('click', { preventDefault: () => {}});
     expect(spy).toHaveBeenCalled();
   });
 
@@ -69,7 +71,7 @@ describe('App', () => {
   it('It should change the main image when right button is clicked', () => {
     const spy = jest.spyOn(App.prototype, 'rightClick');
     const wrapper = shallow(<App />);
-    wrapper.find('span').at(2).simulate('click', { preventDefault: () => {}});
+    wrapper.find('button').at(1).simulate('click', { preventDefault: () => {}});
     expect(spy).toHaveBeenCalled();
   });
 
@@ -183,7 +185,7 @@ describe('App', () => {
   it('It should change the favorite button when it is clicked', () => {
     const spy = jest.spyOn(App.prototype, 'changeFav');
     const wrapper = shallow(<App />);
-    wrapper.find('span').at(3).simulate('click', { preventDefault: () => {}});
+    wrapper.find('button').at(2).simulate('click', { preventDefault: () => {}});
     expect(spy).toHaveBeenCalled();
   });
 });
