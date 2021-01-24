@@ -11,7 +11,7 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.json());
 
-app.get('/items', (req, res) => {
+app.get('/items', async (req, res) => {
   Item.findOne({
     _id: req.query._id,
   })
@@ -19,7 +19,7 @@ app.get('/items', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.post('/items', (req, res) => {
+app.post('/items', async (req, res) => {
   Item.create({
     _id: req.body._id,
     images: req.body.images,
@@ -27,13 +27,10 @@ app.post('/items', (req, res) => {
     favorite: req.body.favorite,
   })
     .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
+    .catch((err) => res.send(err));
 });
 
-app.put('/items', (req, res) => {
+app.put('/items', async (req, res) => {
   Item.findOneAndDelete({
     _id: req.body._id,
   })
@@ -41,7 +38,7 @@ app.put('/items', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.patch('/items', (req, res) => {
+app.patch('/items', async (req, res) => {
   Item.findOneAndUpdate({ _id: req.body._id }, {
     favorite: !req.body.favorite,
   })

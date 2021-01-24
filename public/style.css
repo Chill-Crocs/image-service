@@ -94,7 +94,7 @@
   margin: 1px;
 }
 
-/* Remove roll over border */
+/* Remove focus border */
 span:focus, div:focus {
   outline: none;
 }

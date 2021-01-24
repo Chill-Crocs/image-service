@@ -9,11 +9,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable object-curly-spacing */
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import App from '../client/src/app';
-import Thumbs from '../client/src/thumbs';
-import Modal from '../client/src/modal';
 
 describe('App', () => {
   it('It should render elements without crashing', () => {

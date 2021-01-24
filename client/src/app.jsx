@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-state */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import axios from 'axios';
@@ -16,7 +15,6 @@ class App extends React.PureComponent {
       main: 0,
       modalMain: 0,
       favorite: false,
-      fav: 'whiteHeart.svg',
       showModal: false,
     };
     this.getItems = this.getItems.bind(this);
@@ -39,7 +37,6 @@ class App extends React.PureComponent {
     const item = id || _id;
     axios.get('/items', { params: { _id: item } })
       .then(({ data }) => {
-        let newFav;
         const thumbsArray = [];
         const modalThumbsArray = [];
         for (let i = 0; i < data.images.length; i += 1) {
@@ -54,15 +51,9 @@ class App extends React.PureComponent {
             modalThumbsArray.push('image-modalThumb');
           }
         }
-        if (data.favorite) {
-          newFav = 'redHeart.svg';
-        } else {
-          newFav = 'whiteHeart.svg';
-        }
         this.setState({
           _id: data._id,
           images: data.images,
-          fav: newFav,
           favorite: data.favorite,
           thumbClass: thumbsArray,
           modalThumbClass: modalThumbsArray,

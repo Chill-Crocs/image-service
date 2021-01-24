@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable quotes */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-undef */
@@ -5,10 +6,10 @@
 /* eslint-disable object-curly-spacing */
 const request = require("supertest");
 
-describe("Server", () => {
-  test("It should make a GET request", async () => {
-    await request('http://localhost:3000')
-      .get('/items')
-      .expect(200);
-  });
-});
+// describe("Server", () => {
+//   test("It should make a GET request", async () => {
+//     await request('http://localhost:3000')
+//       .get('/items')
+//       .expect(200);
+//   });
+// });
