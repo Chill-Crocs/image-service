@@ -156,7 +156,7 @@ class App extends React.PureComponent {
       fav = 'image-notFav';
     }
     return (
-      <div className="image-grid">
+      <div className="image-grid">j
 
         <Thumbs thumbClass={thumbClass} images={images} thumbs={this.thumbClick} />
 
