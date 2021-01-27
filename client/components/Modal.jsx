@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Thumbs from './thumbs';
+import Thumbs from './Thumbs';
 
 class Modal extends React.Component {
   constructor(props) {
