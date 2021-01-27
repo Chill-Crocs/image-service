@@ -8,8 +8,8 @@ const request = require("supertest");
 
 describe("Server", () => {
   test("It should make a GET request", async () => {
-    await request('http://localhost:3000')
-      .get('/items')
+    await request('http://localhost:3004')
+      .get('/api/items')
       .expect(200);
   });
 });

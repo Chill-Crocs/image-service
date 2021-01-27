@@ -11,11 +11,11 @@
 /* eslint-disable object-curly-spacing */
 import { shallow } from 'enzyme';
 import React from 'react';
-import App from '../client/src/app';
+import Image from '../client/components/Image';
 
-describe('App', () => {
+describe('Image', () => {
   it('It should render elements without crashing', () => {
-    const appWrapper = shallow(<App />);
+    const appWrapper = shallow(<Image />);
     const element = (<svg viewBox="0 0 24 24">
     <path d="M16,21a0.994,0.994,0,0,1-.664-0.253L5.5,12l9.841-8.747a1,1,0,0,1,1.328,1.494L8.5,12l8.159,7.253A1,1,0,0,1,16,21Z" />
   </svg>);
@@ -23,13 +23,13 @@ describe('App', () => {
   });
 
   it('It should call getItems function when rendered', () => {
-    const spy = jest.spyOn(App.prototype, 'getItems');
-    const wrapper = shallow(<App />);
+    const spy = jest.spyOn(Image.prototype, 'getItems');
+    const wrapper = shallow(<Image />);
     expect(spy).toHaveBeenCalled();
   });
 
   it('It should change the main image when thumbnail is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     const instance = wrapper.instance();
     const event = {
       target: {
@@ -43,7 +43,7 @@ describe('App', () => {
   });
 
   it('It should change the state of main when thumbnail is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     const instance = wrapper.instance();
     expect(instance.state.main).toBe(0);
     instance.thumbClick(2);
@@ -51,14 +51,14 @@ describe('App', () => {
   });
 
   it('It should change the main image when left button is clicked', () => {
-    const spy = jest.spyOn(App.prototype, 'leftClick');
-    const wrapper = shallow(<App />);
+    const spy = jest.spyOn(Image.prototype, 'leftClick');
+    const wrapper = shallow(<Image />);
     wrapper.find('button').at(0).simulate('click', { preventDefault: () => {}});
     expect(spy).toHaveBeenCalled();
   });
 
   it('It should change the state of main when the left button is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     wrapper.setState({ main: 1 });
     const instance = wrapper.instance();
     expect(instance.state.main).toBe(1);
@@ -67,14 +67,14 @@ describe('App', () => {
   });
 
   it('It should change the main image when right button is clicked', () => {
-    const spy = jest.spyOn(App.prototype, 'rightClick');
-    const wrapper = shallow(<App />);
+    const spy = jest.spyOn(Image.prototype, 'rightClick');
+    const wrapper = shallow(<Image />);
     wrapper.find('button').at(1).simulate('click', { preventDefault: () => {}});
     expect(spy).toHaveBeenCalled();
   });
 
   it('It should change the state of main when the right button is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     wrapper.setState({ main: 1 });
     const instance = wrapper.instance();
     expect(instance.state.main).toBe(1);
@@ -83,7 +83,7 @@ describe('App', () => {
   });
 
   it('It should change the main image of modal when the left button is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     const instance = wrapper.instance();
     const event = {
       target: {
@@ -97,7 +97,7 @@ describe('App', () => {
   });
 
   it('It should change the state of modalMain when the left button is clicked in modal', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     wrapper.setState({ modalMain: 1 });
     const instance = wrapper.instance();
     expect(instance.state.modalMain).toBe(1);
@@ -106,7 +106,7 @@ describe('App', () => {
   });
 
   it('It should change the main image of modal when the right button is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     const instance = wrapper.instance();
     const event = {
       target: {
@@ -120,7 +120,7 @@ describe('App', () => {
   });
 
   it('It should change the state of modalMain when the right button is clicked in modal', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     wrapper.setState({ modalMain: 1 });
     const instance = wrapper.instance();
     expect(instance.state.modalMain).toBe(1);
@@ -129,7 +129,7 @@ describe('App', () => {
   });
 
   it('It should change the main image of modal when a thumbnail is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     const instance = wrapper.instance();
     const event = {
       target: {
@@ -143,7 +143,7 @@ describe('App', () => {
   });
 
   it('It should change the state of modalMain when modalThumbs is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     wrapper.setState({ modalMain: 1 });
     const instance = wrapper.instance();
     expect(instance.state.modalMain).toBe(1);
@@ -152,7 +152,7 @@ describe('App', () => {
   });
 
   it('It should show the modal when the main image is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     const instance = wrapper.instance();
     const event = {
       target: {
@@ -166,7 +166,7 @@ describe('App', () => {
   });
 
   it('It should change the state of showModal when mainClick is clicked', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Image />);
     wrapper.setState({ showModal: false });
     const instance = wrapper.instance();
     const event = {
@@ -181,8 +181,8 @@ describe('App', () => {
   });
 
   it('It should change the favorite button when it is clicked', () => {
-    const spy = jest.spyOn(App.prototype, 'changeFav');
-    const wrapper = shallow(<App />);
+    const spy = jest.spyOn(Image.prototype, 'changeFav');
+    const wrapper = shallow(<Image />);
     wrapper.find('button').at(2).simulate('click', { preventDefault: () => {}});
     expect(spy).toHaveBeenCalled();
   });

@@ -10,7 +10,7 @@
 /* eslint-disable object-curly-spacing */
 import { shallow } from 'enzyme';
 import React from 'react';
-import Thumbs from '../client/src/thumbs';
+import Thumbs from '../client/components/Thumbs';
 
 describe('Thumbs', () => {
   it('It should render elements without crashing', () => {

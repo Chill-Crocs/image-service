@@ -11,7 +11,7 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.json());
 
-app.get('/items', async (req, res) => {
+app.get('/api/items/:id', async (req, res) => {
   Item.findOne({
     _id: req.query._id,
   })
@@ -19,7 +19,13 @@ app.get('/items', async (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.post('/items', async (req, res) => {
+app.get('/api/items', async (req, res) => {
+  Item.findOne({})
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.send(err));
+});
+
+app.post('/api/items/:id', async (req, res) => {
   Item.create({
     _id: req.body._id,
     images: req.body.images,
@@ -30,7 +36,7 @@ app.post('/items', async (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.put('/items', async (req, res) => {
+app.put('/api/items/:id', async (req, res) => {
   Item.findOneAndDelete({
     _id: req.body._id,
   })
@@ -38,7 +44,7 @@ app.put('/items', async (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.patch('/items', async (req, res) => {
+app.patch('/api/items/:id', async (req, res) => {
   Item.findOneAndUpdate({ _id: req.body._id }, {
     favorite: !req.body.favorite,
   })

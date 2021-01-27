@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import axios from 'axios';
-import Thumbs from './thumbs';
-import Modal from './modal';
+import Thumbs from './Thumbs';
+import Modal from './Modal';
 
-class App extends React.PureComponent {
+class Image extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,7 @@ class App extends React.PureComponent {
   getItems(id) {
     const { _id, main } = this.state;
     const item = id || _id;
-    axios.get('/items', { params: { _id: item } })
+    axios.get('/api/items/:id', { params: { _id: item } })
       .then(({ data }) => {
         const thumbsArray = [];
         const modalThumbsArray = [];
@@ -135,7 +135,7 @@ class App extends React.PureComponent {
   changeFav(event) {
     event.preventDefault();
     const { _id, favorite } = this.state;
-    axios.patch('./items', { _id, favorite })
+    axios.patch('./api/items/:id', { _id, favorite })
       .then(() => {
         this.getItems();
       });
@@ -194,4 +194,4 @@ class App extends React.PureComponent {
     );
   }
 }
-export default App;
+export default Image;

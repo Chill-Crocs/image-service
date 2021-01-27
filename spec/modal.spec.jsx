@@ -10,8 +10,8 @@
 /* eslint-disable object-curly-spacing */
 import { shallow, mount } from 'enzyme';
 import React from 'react';
-import App from '../client/src/app';
-import Modal from '../client/src/modal';
+import Image from '../client/components/Image';
+import Modal from '../client/components/Modal';
 
 describe('Modal', () => {
   it('It should render elements without crashing', () => {
@@ -37,7 +37,7 @@ describe('Modal', () => {
   });
 
   it('It should change the state of showModal when onClose is clicked', () => {
-    const wrapper = mount(<App />);
+    const wrapper = mount(<Image />);
     wrapper.setState({ showModal: true, main: 1 });
     const instance = wrapper.instance();
     const modalWrapper = shallow(<Modal modalThumbs={jest.fn()} onClose={jest.fn()} right={jest.fn()} left={jest.fn()} images={['one', 'two', 'three']} thumbClass={['one', 'two', 'three']} main={0} showModal />);
@@ -71,7 +71,7 @@ describe('Modal', () => {
   });
 
   it('It should change the state of modalMain when thumbClick is clicked', () => {
-    const wrapper = mount(<App />);
+    const wrapper = mount(<Image />);
     wrapper.setState({ modalMain: 1 });
     const instance = wrapper.instance();
     const modalWrapper = shallow(<Modal modalThumbs={jest.fn()} onClose={jest.fn()} right={jest.fn()} left={jest.fn()} images={['one', 'two', 'three']} thumbClass={['one', 'two', 'three']} main={0} showModal />);
@@ -99,7 +99,7 @@ describe('Modal', () => {
   });
 
   it('It should change the state of modalMain when leftClick is clicked', () => {
-    const wrapper = mount(<App />);
+    const wrapper = mount(<Image />);
     wrapper.setState({ modalMain: 1 });
     const instance = wrapper.instance();
     const modalWrapper = shallow(<Modal modalThumbs={jest.fn()} onClose={jest.fn()} right={jest.fn()} left={jest.fn()} images={['one', 'two', 'three']} thumbClass={['one', 'two', 'three']} main={0} showModal />);
@@ -127,7 +127,7 @@ describe('Modal', () => {
   });
 
   it('It should change the state of modalMain when rightClick is clicked', () => {
-    const wrapper = mount(<App />);
+    const wrapper = mount(<Image />);
     wrapper.setState({ modalMain: 1 });
     const instance = wrapper.instance();
     const modalWrapper = shallow(<Modal modalThumbs={jest.fn()} onClose={jest.fn()} right={jest.fn()} left={jest.fn()} images={['one', 'two', 'three']} thumbClass={['one', 'two', 'three']} main={0} showModal />);
