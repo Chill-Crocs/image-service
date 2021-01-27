@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.get('/api/items/:id', async (req, res) => {
   Item.findOne({
-    _id: req.query._id,
+    _id: req.params.id,
   })
     .then((data) => res.status(200).send(data))
     .catch((err) => res.send(err));

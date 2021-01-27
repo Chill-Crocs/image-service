@@ -35,7 +35,7 @@ class Image extends React.PureComponent {
   getItems(id) {
     const { _id, main } = this.state;
     const item = id || _id;
-    axios.get('/api/items/:id', { params: { _id: item } })
+    axios.get(`/api/items/${item}`)
       .then(({ data }) => {
         const thumbsArray = [];
         const modalThumbsArray = [];
