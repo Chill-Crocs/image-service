@@ -8,7 +8,7 @@ class Image extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      _id: 0,
+      id: 0,
       images: [],
       thumbClass: [],
       modalThumbClass: [],
@@ -32,9 +32,9 @@ class Image extends React.PureComponent {
     this.getItems();
   }
 
-  getItems(id) {
-    const { _id, main } = this.state;
-    const item = id || _id;
+  getItems(itemId) {
+    const { id, main } = this.state;
+    const item = itemId || id;
     axios.get(`/api/items/${item}`)
       .then(({ data }) => {
         const thumbsArray = [];
@@ -52,7 +52,7 @@ class Image extends React.PureComponent {
           }
         }
         this.setState({
-          _id: data._id,
+          id: data._id,
           images: data.images,
           favorite: data.favorite,
           thumbClass: thumbsArray,
@@ -134,8 +134,8 @@ class Image extends React.PureComponent {
 
   changeFav(event) {
     event.preventDefault();
-    const { _id, favorite } = this.state;
-    axios.patch('./api/items/:id', { _id, favorite })
+    const { id, favorite } = this.state;
+    axios.patch(`/api/items/${id}`, { favorite })
       .then(() => {
         this.getItems();
       });

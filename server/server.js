@@ -45,7 +45,7 @@ app.put('/api/items/:id', async (req, res) => {
 });
 
 app.patch('/api/items/:id', async (req, res) => {
-  Item.findOneAndUpdate({ _id: req.body._id }, {
+  Item.findOneAndUpdate({ _id: req.params.id }, {
     favorite: !req.body.favorite,
   })
     .then(() => res.sendStatus(204))
