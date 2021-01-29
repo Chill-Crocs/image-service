@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-const db = mongoose.connect('mongodb://172.17.0.3/itemlist', { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connect('mongodb://database/itemlist', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to Mongo'))
   .catch((err) => console.log(err));
 

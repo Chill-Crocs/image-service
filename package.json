@@ -5,7 +5,7 @@
   "main": "index.jsx",
   "scripts": {
     "build": "webpack -w",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "startdev": "nodemon -L index.js",
     "seed": "node database/seed.js",
     "test": "jest --verbose",

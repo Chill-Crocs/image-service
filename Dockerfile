@@ -11,9 +11,9 @@ WORKDIR /src/app
 COPY . /src/app
 
 # Does your app have any dependencies that should be installed?
-RUN yarn install
+RUN npm ci
 
-RUN yarn global add nodemon
+# RUN yarn global add nodemon
 
 # What port will the container talk to the outside world with once created?
 EXPOSE 3004
